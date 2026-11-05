@@ -11,6 +11,12 @@ class App extends Component {
       { id: 'id-4', text: 'Todo 4', completed: false },
     ],
   };
+  deleteTodo = todoId => {
+    this.setState(prewState => ({
+      todos: prewState.todos.filter(todo => todo.id !== todoId),
+    }));
+  };
+
   render() {
     const { todos } = this.state;
     return (
@@ -18,7 +24,7 @@ class App extends Component {
         <Accordion title="Історія транзакцій">
           <></>
         </Accordion>
-        <TodoList todos={todos} />
+        <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
       </div>
     );
   }
