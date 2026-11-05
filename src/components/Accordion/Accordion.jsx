@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import css from './Accordion.module.css';
+
+import {
+  AccordionSection,
+  AccordionHeader,
+  AccordionContent,
+  Arrow,
+} from './Accordion.styled';
 
 export default function Accordion({ title, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className={css.accordion}>
-      <button
+    <AccordionSection>
+      <AccordionHeader
         type="button"
-        className={css.header}
         onClick={() => setIsOpen(prev => !prev)}
         aria-expanded={isOpen}
       >
         <span>{title}</span>
-        <span className={css.arrow}>{isOpen ? '▲' : '▼'}</span>
-      </button>
+        <Arrow>{isOpen ? '▲' : '▼'}</Arrow>
+      </AccordionHeader>
 
-      {isOpen && <div className={css.content}>{children}</div>}
-    </section>
+      {isOpen && <AccordionContent>{children}</AccordionContent>}
+    </AccordionSection>
   );
 }
 
