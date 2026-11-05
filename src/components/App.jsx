@@ -6,7 +6,7 @@ class App extends Component {
   state = {
     todos: [
       { id: 'id-1', text: 'Todo 1', completed: false },
-      { id: 'id-2', text: 'Todo 2', completed: false },
+      { id: 'id-2', text: 'Todo 2', completed: true },
       { id: 'id-3', text: 'Todo 3', completed: false },
       { id: 'id-4', text: 'Todo 4', completed: false },
     ],
@@ -19,9 +19,15 @@ class App extends Component {
 
   render() {
     const { todos } = this.state;
+    const completedTodos = todos.reduce(
+      (acc, todo) => (todo.completed ? acc + 1 : acc),
+      0
+    );
     return (
       <div>
         <Accordion title="Історія транзакцій">
+          <div>Count all: {todos.length}</div>
+          <div>Count doing: {completedTodos}</div>
           <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
         </Accordion>
       </div>
