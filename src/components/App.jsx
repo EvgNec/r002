@@ -22,9 +22,8 @@ class App extends Component {
     return (
       <div>
         <Accordion title="Історія транзакцій">
-          <></>
+          <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
         </Accordion>
-        <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
       </div>
     );
   }
