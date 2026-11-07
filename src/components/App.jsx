@@ -22,6 +22,23 @@ class App extends Component {
       todos: prewState.todos.filter(todo => todo.id !== todoId),
     }));
   };
+  onAdd = type => {
+    this.setState(prewState => ({
+      [type]: prewState[type] + 1,
+    }));
+  };
+  countTotalFeedback = () =>
+    this.state.bad + this.state.good + this.state.neutral;
+  countPositiveFeedbackPercentage = () => {
+    const total = this.countTotalFeedback();
+    if (total === 0) return 0;
+    return Number(
+      (
+        (this.state.good * 100) /
+        (this.state.bad + this.state.good + this.state.neutral)
+      ).toFixed(2)
+    );
+  };
   render() {
     const { todos } = this.state;
     const { good, neutral, bad } = this.state;
@@ -45,6 +62,9 @@ class App extends Component {
             good={good}
             neutral={neutral}
             bad={bad}
+            onAdd={this.onAdd}
+            countTotalFeedback={this.countTotalFeedback()}
+            countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}
           />
         </Accordion>
       </div>
