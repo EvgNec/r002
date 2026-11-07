@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import Accordion from './Accordion';
 import TodoList from './TodoList';
+import CardTranslator from './CardTranslator/CardTranslator';
+import verbs from './CardTranslator/verbs.json';
 
 class App extends Component {
   state = {
@@ -29,6 +31,9 @@ class App extends Component {
           <div>Count all: {todos.length}</div>
           <div>Count doing: {completedTodos}</div>
           <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
+        </Accordion>
+        <Accordion title="Словник">
+          <CardTranslator verbs={verbs} />
         </Accordion>
       </div>
     );

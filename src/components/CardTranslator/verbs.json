@@ -1,0 +1,73 @@
+
+[
+  {
+    "id": 1,
+    "verb": "ser",
+    "translation": "бути",
+    "sentence": "Eu sou programador.",
+    "sentenceTranslation": "Я програміст."
+  },
+  {
+    "id": 2,
+    "verb": "estar",
+    "translation": "бути, перебувати",
+    "sentence": "Eu estou em casa.",
+    "sentenceTranslation": "Я вдома."
+  },
+  {
+    "id": 3,
+    "verb": "ter",
+    "translation": "мати",
+    "sentence": "Eu tenho um carro novo.",
+    "sentenceTranslation": "У мене є нова машина."
+  },
+  {
+    "id": 4,
+    "verb": "fazer",
+    "translation": "робити",
+    "sentence": "Eu faço o pequeno-almoço todos os dias.",
+    "sentenceTranslation": "Я готую сніданок щодня."
+  },
+  {
+    "id": 5,
+    "verb": "ir",
+    "translation": "йти, їхати",
+    "sentence": "Amanhã vou ao supermercado.",
+    "sentenceTranslation": "Завтра я піду до супермаркету."
+  },
+  {
+    "id": 6,
+    "verb": "querer",
+    "translation": "хотіти",
+    "sentence": "Quero aprender português.",
+    "sentenceTranslation": "Я хочу вивчити португальську."
+  },
+  {
+    "id": 7,
+    "verb": "poder",
+    "translation": "могти",
+    "sentence": "Posso abrir a janela?",
+    "sentenceTranslation": "Можна відчинити вікно?"
+  },
+  {
+    "id": 8,
+    "verb": "saber",
+    "translation": "знати, вміти",
+    "sentence": "Eu sei falar um pouco de português.",
+    "sentenceTranslation": "Я вмію трохи говорити португальською."
+  },
+  {
+    "id": 9,
+    "verb": "comer",
+    "translation": "їсти",
+    "sentence": "Nós comemos peixe ao almoço.",
+    "sentenceTranslation": "Ми їмо рибу на обід."
+  },
+  {
+    "id": 10,
+    "verb": "viver",
+    "translation": "жити",
+    "sentence": "Eu vivo em Portugal.",
+    "sentenceTranslation": "Я живу в Португалії."
+  }
+]

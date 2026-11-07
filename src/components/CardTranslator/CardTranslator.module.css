@@ -1,0 +1,109 @@
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 230px;
+  padding: 24px;
+
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  text-align: center;
+  font-family: inherit;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+}
+
+.card:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+.active {
+  background-color: #eff6ff;
+  border-color: #93c5fd;
+}
+
+.verb {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2563eb;
+  margin: 0 0 16px;
+}
+
+.sentence {
+  font-size: 17px;
+  line-height: 1.5;
+  color: #334155;
+  margin: 0 0 20px;
+}
+
+.hint {
+  margin-top: auto;
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.translation {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #bfdbfe;
+  animation: fadeIn 0.3s ease;
+}
+
+.verbTranslation {
+  font-size: 18px;
+  font-weight: 600;
+  color: #16a34a;
+  margin: 0 0 10px;
+}
+
+.sentenceTranslation {
+  font-size: 15px;
+  line-height: 1.5;
+  color: #475569;
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    min-height: 200px;
+    padding: 20px;
+  }
+
+  .verb {
+    font-size: 24px;
+  }
+
+  .sentence {
+    font-size: 16px;
+  }
+}
