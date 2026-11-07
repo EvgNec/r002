@@ -12,7 +12,7 @@ export default function CardTranslator({
   const toggleTranslation = () => {
     setShowTranslation(prev => !prev);
   };
-
+  console.log(verb);
   return (
     <button
       type="button"
