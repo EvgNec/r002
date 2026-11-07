@@ -3,7 +3,9 @@ import Accordion from './Accordion';
 import TodoList from './TodoList';
 import verbs from './CardTranslator/verbs.json';
 import Card from './CardTranslator/Card';
-import Feedback from './Feedback/Feedback';
+import Statistics from './Feedback/Statistics';
+import FeedbackOptions from './Feedback/FeedbackOptions';
+import Section from './Feedback/Section';
 
 class App extends Component {
   state = {
@@ -57,15 +59,22 @@ class App extends Component {
           <Card verbs={verbs} />
         </Accordion>
         <Accordion title="Feedback">
-          <Feedback
-            title="Please leave feedback"
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            onAdd={this.onAdd}
-            countTotalFeedback={this.countTotalFeedback()}
-            countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}
-          />
+          <Section title="Pleas Leave feedback">
+            <FeedbackOptions onAdd={this.onAdd} />
+          </Section>
+          <Section title="Statistics">
+            {this.countTotalFeedback() > 0 ? (
+              <Statistics
+                good={good}
+                neutral={neutral}
+                bad={bad}
+                countTotalFeedback={this.countTotalFeedback()}
+                countPositiveFeedbackPercentage={this.countPositiveFeedbackPercentage()}
+              />
+            ) : (
+              <p>There is no feedback</p>
+            )}
+          </Section>
         </Accordion>
       </div>
     );

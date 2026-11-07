@@ -1,22 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-export default function Feedback({
-  title,
+export default function Statistics({
   good,
   neutral,
   bad,
-  onAdd,
   countTotalFeedback,
   countPositiveFeedbackPercentage,
 }) {
   return (
     <div>
-      <span>{title}</span>
-      <button onClick={() => onAdd('good')}>Good</button>
-      <button onClick={() => onAdd('neutral')}>Neutral</button>
-      <button onClick={() => onAdd('bad')}>Bad</button>
-      <span>Statistics</span>
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
@@ -26,12 +18,11 @@ export default function Feedback({
   );
 }
 
-Feedback.propTypes = {
+Statistics.propTypes = {
   title: PropTypes.string.isRequired,
   good: PropTypes.number.isRequired,
   neutral: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
-  onAdd: PropTypes.func.isRequired,
   countTotalFeedback: PropTypes.number.isRequired,
   countPositiveFeedbackPercentage: PropTypes.number.isRequired,
 };
