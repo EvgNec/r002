@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { SectionContainer, SectionTitle } from './Section.styled';
+
 export default function Section({ title, children }) {
   return (
-    <section>
-      <h2>{title}</h2>
+    <SectionContainer>
+      <SectionTitle>{title}</SectionTitle>
       {children}
-    </section>
+    </SectionContainer>
   );
 }
 

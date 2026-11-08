@@ -3,9 +3,9 @@ import Accordion from './Accordion';
 import TodoList from './TodoList';
 import verbs from './CardTranslator/verbs.json';
 import Card from './CardTranslator/Card';
-import Statistics from './Feedback/Statistics';
-import FeedbackOptions from './Feedback/FeedbackOptions';
-import Section from './Feedback/Section';
+import Statistics from './Feedback/Statistics/Statistics';
+import FeedbackOptions from './Feedback/FeedbackOptions/FeedbackOptions';
+import Section from './Feedback/Section/Section';
 
 class App extends Component {
   state = {
