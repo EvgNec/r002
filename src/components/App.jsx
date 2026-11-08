@@ -24,10 +24,24 @@ class App extends Component {
       todos: prewState.todos.filter(todo => todo.id !== todoId),
     }));
   };
-  onAdd = type => {
+  /* onAdd = type => {
     this.setState(prewState => ({
-      [type]: prewState[type] + 1,
+     [type]: prewState[type] + 1,
     }));
+  };*/
+  onAdd = type => {
+    this.setState(
+      prevState => {
+        console.log('До:', prevState);
+
+        return {
+          [type]: prevState[type] + 1,
+        };
+      },
+      () => {
+        console.log('Після:', this.state);
+      }
+    );
   };
   countTotalFeedback = () =>
     this.state.bad + this.state.good + this.state.neutral;
