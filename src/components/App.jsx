@@ -32,8 +32,9 @@ class App extends Component {
   onAdd = type => {
     this.setState(
       prevState => {
-        console.log('До:', prevState);
-
+        console.log('type:', type);
+        console.log('prevState:', prevState);
+        console.log('prevState[type]:', prevState[type]);
         return {
           [type]: prevState[type] + 1,
         };
