@@ -6,6 +6,7 @@ import Card from './CardTranslator/Card';
 import Statistics from './Feedback/Statistics/Statistics';
 import FeedbackOptions from './Feedback/FeedbackOptions/FeedbackOptions';
 import Section from './Feedback/Section/Section';
+import Phonebook from './Phonebook/Phonebook';
 
 class App extends Component {
   state = {
@@ -90,6 +91,9 @@ class App extends Component {
               <p>There is no feedback</p>
             )}
           </Section>
+        </Accordion>
+        <Accordion title="Phonebook">
+          <Phonebook />
         </Accordion>
       </div>
     );
