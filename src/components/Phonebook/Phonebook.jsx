@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-// Виносимо об'єкт із примітивами в константу, щоб було зручно скидати.
-// Не можна використовувати, якщо в якійсь властивості стану зберігається складний тип.
 const INITIAL_STATE = {
   login: '',
   email: '',
@@ -16,19 +14,18 @@ export default class App extends Component {
 
   handleChange = evt => {
     const { name, value, type, checked } = evt.target;
-    // Якщо тип елемента – checkbox, беремо значення checked,
-    // в іншому випадку – value
-    this.setState({ [name]: type === 'checkbox' ? checked : value });
+
+    this.setState({
+      [name]: type === 'checkbox' ? checked : value,
+    });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const { login, email, password, agreed } = this.state;
-    console.log(
-      `Login: ${login}, Email: ${email}, Password: ${password}, Agreed: ${agreed}`
-    );
+  handleSubmit = evt => {
+    evt.preventDefault();
 
-    /* ... */
+    console.log(this.state);
+
+    this.setState({ ...INITIAL_STATE });
   };
 
   render() {
@@ -36,11 +33,41 @@ export default class App extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        {/* ... */}
+        <label>
+          Login
+          <input
+            type="text"
+            name="login"
+            value={login}
+            onChange={this.handleChange}
+          />
+        </label>
+
+        <label>
+          Email
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          />
+        </label>
+
+        <label>
+          Password
+          <input
+            type="password"
+            name="password"
+            value={password}
+            onChange={this.handleChange}
+          />
+        </label>
+
         <label>
           Agree to terms
           <input
             type="checkbox"
+            name="agreed"
             checked={agreed}
             onChange={this.handleChange}
           />
