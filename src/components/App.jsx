@@ -100,18 +100,22 @@ class App extends Component {
           <Section title="Form">
             <Phonebook onSubmit={values => console.log(values)} />
           </Section>
-          <Section title="Input">
-            <Phonebook0 onSubmit={values => console.log(values)} />
-          </Section>
-          <Section title="Simple Form">
-            <Phonebook1 onSubmit={values => console.log(values)} />
-          </Section>
-          <Section title="Form with checkbox">
-            <Phonebook2 onSubmit={values => console.log(values)} />
-          </Section>
-          <Section title="Form with radiobutton">
-            <Phonebook3 onSubmit={values => console.log(values)} />
-          </Section>
+          {false && (
+            <>
+              <Section title="Input">
+                <Phonebook0 onSubmit={values => console.log(values)} />
+              </Section>
+              <Section title="Simple Form">
+                <Phonebook1 onSubmit={values => console.log(values)} />
+              </Section>
+              <Section title="Form with checkbox">
+                <Phonebook2 onSubmit={values => console.log(values)} />
+              </Section>
+              <Section title="Form with radiobutton">
+                <Phonebook3 onSubmit={values => console.log(values)} />
+              </Section>
+            </>
+          )}
         </Accordion>
       </div>
     );

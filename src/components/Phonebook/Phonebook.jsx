@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
-// Використовуємо Enumerable, щоб не створювати антипатерн "магічні рядки"
+import {
+  Form,
+  Label,
+  Input,
+  CheckboxLabel,
+  Checkbox,
+  Section,
+  Title,
+  RadioLabel,
+  Radio,
+  Select,
+  Button,
+} from './Phonebook.styled';
 
 const Gender = {
   MALE: 'male',
@@ -41,84 +53,89 @@ export default class Phonebook extends Component {
     const { login, email, password, agreed, gender, age } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <Form onSubmit={this.handleSubmit}>
+        <Label>
           Login
-          <input
+          <Input
             type="text"
             name="login"
             value={login}
             onChange={this.handleChange}
           />
-        </label>
+        </Label>
 
-        <label>
+        <Label>
           Email
-          <input
+          <Input
             type="email"
             name="email"
             value={email}
             onChange={this.handleChange}
           />
-        </label>
+        </Label>
 
-        <label>
+        <Label>
           Password
-          <input
+          <Input
             type="password"
             name="password"
             value={password}
             onChange={this.handleChange}
           />
-        </label>
+        </Label>
 
-        <label>
-          Agree to terms
-          <input
+        <CheckboxLabel>
+          <Checkbox
             type="checkbox"
             name="agreed"
             checked={agreed}
             onChange={this.handleChange}
           />
-        </label>
-        <section>
-          <h2>Choose your gender</h2>
-          <label>
-            Male
-            <input
+          Agree to terms
+        </CheckboxLabel>
+
+        <Section>
+          <Title>Choose your gender</Title>
+
+          <RadioLabel>
+            <Radio
               type="radio"
-              checked={gender === Gender.MALE}
               name="gender"
               value={Gender.MALE}
+              checked={gender === Gender.MALE}
               onChange={this.handleChange}
             />
-          </label>
-          <label>
-            Female
-            <input
+            Male
+          </RadioLabel>
+
+          <RadioLabel>
+            <Radio
               type="radio"
-              checked={gender === Gender.FEMALE}
               name="gender"
               value={Gender.FEMALE}
+              checked={gender === Gender.FEMALE}
               onChange={this.handleChange}
             />
-          </label>
-          <label>
+            Female
+          </RadioLabel>
+
+          <Label>
             Choose your age
-            <select name="age" value={age} onChange={this.handleChange}>
+            <Select name="age" value={age} onChange={this.handleChange}>
               <option value="" disabled>
                 ...
               </option>
               <option value="18-25">18-25</option>
               <option value="26-35">26-35</option>
               <option value="36+">36+</option>
-            </select>
-          </label>
-        </section>
-        <button type="submit" disabled={!agreed}>
+            </Select>
+          </Label>
+        </Section>
+
+        <Button type="submit" disabled={!agreed}>
           Sign up as {login}
-        </button>
-      </form>
+        </Button>
+      </Form>
     );
   }
 }
