@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   password: '',
 };
 
-export default class App extends Component {
+export default class Phonebook1 extends Component {
   state = { ...INITIAL_STATE };
 
   // Для всіх інпутів створюємо один обробник

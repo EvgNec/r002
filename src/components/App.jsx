@@ -7,6 +7,10 @@ import Statistics from './Feedback/Statistics/Statistics';
 import FeedbackOptions from './Feedback/FeedbackOptions/FeedbackOptions';
 import Section from './Feedback/Section/Section';
 import Phonebook from './Phonebook/Phonebook';
+import Phonebook2 from './Phonebook/Phonebook2';
+import Phonebook1 from './Phonebook/Phonebook1';
+import Phonebook0 from './Phonebook/Phonebook0';
+import Phonebook3 from './Phonebook/Phonebook3';
 
 class App extends Component {
   state = {
@@ -93,7 +97,21 @@ class App extends Component {
           </Section>
         </Accordion>
         <Accordion title="Phonebook">
-          <Phonebook onSubmit={values => console.log(values)} />
+          <Section title="Form">
+            <Phonebook onSubmit={values => console.log(values)} />
+          </Section>
+          <Section title="Input">
+            <Phonebook0 onSubmit={values => console.log(values)} />
+          </Section>
+          <Section title="Simple Form">
+            <Phonebook1 onSubmit={values => console.log(values)} />
+          </Section>
+          <Section title="Form with checkbox">
+            <Phonebook2 onSubmit={values => console.log(values)} />
+          </Section>
+          <Section title="Form with radiobutton">
+            <Phonebook3 onSubmit={values => console.log(values)} />
+          </Section>
         </Accordion>
       </div>
     );
