@@ -93,7 +93,7 @@ class App extends Component {
           </Section>
         </Accordion>
         <Accordion title="Phonebook">
-          <Phonebook />
+          <Phonebook onSubmit={values => console.log(values)} />
         </Accordion>
       </div>
     );

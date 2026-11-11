@@ -2,17 +2,40 @@ import React, { Component } from 'react';
 
 export default class App extends Component {
   state = {
-    inputValue: '',
+    login: '',
   };
 
-  handleChange = evt => {
-    this.setState({ inputValue: evt.target.value });
+  // Відповідає за оновлення стану
+  handleChange = e => {
+    this.setState({ login: e.target.value });
+  };
+
+  // Викликається під час відправлення форми
+  handleSubmit = evt => {
+    evt.preventDefault();
+    console.log(`Signed up as: ${this.state.login}`);
+
+    // Проп, який передається формі для виклику під час сабміту
+    this.props.onSubmit({ ...this.state });
   };
 
   render() {
-    const { inputValue } = this.state;
+    const { login } = this.state;
+
     return (
-      <input type="text" value={inputValue} onChange={this.handleChange} />
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name
+          <input
+            type="text"
+            placeholder="Enter login"
+            value={login}
+            onChange={this.handleChange}
+          />
+        </label>
+
+        <button type="submit">Sign up as {login}</button>
+      </form>
     );
   }
 }
