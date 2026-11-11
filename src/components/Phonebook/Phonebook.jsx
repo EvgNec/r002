@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
 
+// Виносимо об'єкт із примітивами в константу, щоб було зручно скидати.
+// Не можна використовувати, якщо в якійсь властивості стану зберігається складний тип.
+const INITIAL_STATE = {
+  login: '',
+  email: '',
+  password: '',
+};
+
 export default class App extends Component {
-  state = {
-    login: '',
+  state = { ...INITIAL_STATE };
+
+  // Для всіх інпутів створюємо один обробник
+  // Розрізняти інпути будемо за атрибутом name
+  handleChange = evt => {
+    const { name, value } = evt.target;
+    this.setState({ [name]: value });
   };
 
-  // Відповідає за оновлення стану
-  handleChange = e => {
-    this.setState({ login: e.target.value });
-  };
-
-  // Викликається під час відправлення форми
   handleSubmit = evt => {
     evt.preventDefault();
-    console.log(`Signed up as: ${this.state.login}`);
-
-    // Проп, який передається формі для виклику під час сабміту
+    const { login, email, password } = this.state;
+    console.log(`Login: ${login}, Email: ${email}, Password: ${password}`);
     this.props.onSubmit({ ...this.state });
+    this.reset();
+  };
+
+  reset = () => {
+    this.setState({ ...INITIAL_STATE });
   };
 
   render() {
-    const { login } = this.state;
+    const { login, email, password } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -29,7 +40,28 @@ export default class App extends Component {
           <input
             type="text"
             placeholder="Enter login"
+            name="login"
             value={login}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label>
+          Email
+          <input
+            type="email"
+            placeholder="Enter email"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            placeholder="Enter password"
+            name="password"
+            value={password}
             onChange={this.handleChange}
           />
         </label>
