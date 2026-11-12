@@ -39,17 +39,9 @@ class App extends Component {
       }),
     }));
   };
-  /* onAdd = type => {
-    this.setState(prewState => ({
-     [type]: prewState[type] + 1,
-    }));
-  };*/
   onAdd = type => {
     this.setState(
       prevState => {
-        console.log('type:', type);
-        console.log('prevState:', prevState);
-        console.log('prevState[type]:', prevState[type]);
         return {
           [type]: prevState[type] + 1,
         };
