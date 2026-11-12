@@ -29,6 +29,16 @@ class App extends Component {
       todos: prewState.todos.filter(todo => todo.id !== todoId),
     }));
   };
+  handleChange = todoId => {
+    this.setState(prewState => ({
+      todos: prewState.todos.map(todo => {
+        if (todo.id === todoId) {
+          return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+      }),
+    }));
+  };
   /* onAdd = type => {
     this.setState(prewState => ({
      [type]: prewState[type] + 1,
@@ -73,7 +83,11 @@ class App extends Component {
         <Accordion title="ToDo">
           <div>Count all: {todos.length}</div>
           <div>Count doing: {completedTodos}</div>
-          <TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
+          <TodoList
+            todos={todos}
+            onDeleteTodo={this.deleteTodo}
+            handleChange={this.handleChange}
+          />
         </Accordion>
         <Accordion title="Словник">
           <Card verbs={verbs} />
