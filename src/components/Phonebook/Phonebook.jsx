@@ -35,7 +35,6 @@ export default class Phonebook extends Component {
 
   handleChange = evt => {
     const { name, value, type, checked } = evt.target;
-
     this.setState({
       [name]: type === 'checkbox' ? checked : value,
     });
