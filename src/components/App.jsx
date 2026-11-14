@@ -96,6 +96,12 @@ class App extends Component {
       (acc, todo) => (todo.completed ? acc + 1 : acc),
       0
     );
+
+    const normalizedFilter = this.state.filter.toLowerCase();
+
+    const visibleTodos = this.state.todos.filter(todo =>
+      todo.text.toLowerCase().includes(normalizedFilter)
+    );
     return (
       <div>
         <Accordion title="ToDo">
@@ -104,7 +110,7 @@ class App extends Component {
           <TodoEditor onSubmit={this.addTodo} />
           <TodoFilter value={filter} onFilter={this.filterTodo} />
           <TodoList
-            todos={todos}
+            todos={visibleTodos}
             onDeleteTodo={this.deleteTodo}
             handleChange={this.handleChange}
           />
