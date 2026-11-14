@@ -1,10 +1,16 @@
 import React from 'react';
-
+import { FilterLabel, FilterInput } from './TodoFilter.styled';
 export default function TodoFilter({ value, onFilter }) {
   return (
-    <label>
-      Filter <input type="text" value={value} onChange={onFilter} />
-    </label>
+    <FilterLabel>
+      Filter
+      <FilterInput
+        type="text"
+        value={value}
+        onChange={onFilter}
+        placeholder="Search todos..."
+      />
+    </FilterLabel>
   );
 }
 

@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
 
 export const List = styled.ul`
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
   list-style: none;
   padding: 0;
   margin: 0;
-  max-width: 500px;
 `;
 
 export const Item = styled.li`
