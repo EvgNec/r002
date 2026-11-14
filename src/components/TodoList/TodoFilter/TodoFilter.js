@@ -1,4 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+export default function TodoFilter({ value, onFilter }) {
+  return (
+    <label>
+      Filter <input type="text" value={value} onChange={onFilter} />
+    </label>
+  );
+}
+
+/* import React, { Component } from 'react';
 
 export class TodoFilter extends Component {
   handleChange = e => {
@@ -13,4 +23,4 @@ export class TodoFilter extends Component {
   }
 }
 
-export default TodoFilter;
+export default TodoFilter; */

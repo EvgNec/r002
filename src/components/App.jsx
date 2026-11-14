@@ -33,9 +33,9 @@ class App extends Component {
       todos: prewState.todos.filter(todo => todo.id !== todoId),
     }));
   };
-  filterTodo = text => {
+  filterTodo = e => {
     this.setState({
-      filter: text,
+      filter: e.currentTarget.value,
     });
   };
   addTodo = mess => {
@@ -90,7 +90,7 @@ class App extends Component {
     );
   };
   render() {
-    const { todos } = this.state;
+    const { todos, filter } = this.state;
     const { good, neutral, bad } = this.state;
     const completedTodos = todos.reduce(
       (acc, todo) => (todo.completed ? acc + 1 : acc),
@@ -102,7 +102,7 @@ class App extends Component {
           <div>Count all: {todos.length}</div>
           <div>Count doing: {completedTodos}</div>
           <TodoEditor onSubmit={this.addTodo} />
-          <TodoFilter onFilter={this.filterTodo} />
+          <TodoFilter value={filter} onFilter={this.filterTodo} />
           <TodoList
             todos={todos}
             onDeleteTodo={this.deleteTodo}
