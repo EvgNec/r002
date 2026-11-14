@@ -13,6 +13,7 @@ import Phonebook0 from './Phonebook/Phonebook0';
 import Phonebook3 from './Phonebook/Phonebook3';
 import TodoEditor from './TodoList/TodoEditor';
 import { nanoid } from 'nanoid';
+import TodoFilter from './TodoList/TodoFilter';
 
 class App extends Component {
   state = {
@@ -22,6 +23,7 @@ class App extends Component {
       { id: 'id-3', text: 'Todo 3', completed: false },
       { id: 'id-4', text: 'Todo 4', completed: false },
     ],
+    filter: '',
     good: 0,
     neutral: 0,
     bad: 0,
@@ -30,6 +32,11 @@ class App extends Component {
     this.setState(prewState => ({
       todos: prewState.todos.filter(todo => todo.id !== todoId),
     }));
+  };
+  filterTodo = text => {
+    this.setState({
+      filter: text,
+    });
   };
   addTodo = mess => {
     const todo = {
@@ -95,6 +102,7 @@ class App extends Component {
           <div>Count all: {todos.length}</div>
           <div>Count doing: {completedTodos}</div>
           <TodoEditor onSubmit={this.addTodo} />
+          <TodoFilter onFilter={this.filterTodo} />
           <TodoList
             todos={todos}
             onDeleteTodo={this.deleteTodo}
