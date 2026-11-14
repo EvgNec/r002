@@ -29,7 +29,8 @@ class App extends Component {
       todos: prewState.todos.filter(todo => todo.id !== todoId),
     }));
   };
-  handleChange = todoId => {
+  addTodo;
+  /*   handleChange = todoId => {
     this.setState(prewState => ({
       todos: prewState.todos.map(todo => {
         if (todo.id === todoId) {
@@ -37,6 +38,13 @@ class App extends Component {
         }
         return todo;
       }),
+    }));
+  }; */
+  handleChange = todoId => {
+    this.setState(prewState => ({
+      todos: prewState.todos.map(todo =>
+        todo.id === todoId ? { ...todo, completed: !todo.completed } : todo
+      ),
     }));
   };
   onAdd = type => {
