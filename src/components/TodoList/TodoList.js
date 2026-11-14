@@ -1,23 +1,23 @@
 import React from 'react';
-import './TodoList.css';
+import { List, Item, Checkbox, Text, DeleteButton } from './TodoList.styled';
 
 const TodoList = ({ todos, onDeleteTodo, handleChange }) => (
-  <ul className="TodoList">
+  <List>
     {todos.map(({ id, text, completed }) => (
-      <li key={id} className="TodoList__item">
-        <label>
-          <input
-            type="checkbox"
-            name="doing"
-            checked={completed}
-            onChange={() => handleChange(id)}
-          />
-        </label>
-        <p className="TodoList__text">{text}</p>
-        <button onClick={() => onDeleteTodo(id)}>Delete</button>
-      </li>
+      <Item key={id}>
+        <Checkbox
+          type="checkbox"
+          name="doing"
+          checked={completed}
+          onChange={() => handleChange(id)}
+        />
+
+        <Text completed={completed}>{text}</Text>
+
+        <DeleteButton onClick={() => onDeleteTodo(id)}>Delete</DeleteButton>
+      </Item>
     ))}
-  </ul>
+  </List>
 );
 
 export default TodoList;
