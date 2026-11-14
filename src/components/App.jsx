@@ -11,6 +11,8 @@ import Phonebook2 from './Phonebook/Phonebook2';
 import Phonebook1 from './Phonebook/Phonebook1';
 import Phonebook0 from './Phonebook/Phonebook0';
 import Phonebook3 from './Phonebook/Phonebook3';
+import TodoEditor from './TodoList/TodoEditor';
+import { nanoid } from 'nanoid';
 
 class App extends Component {
   state = {
@@ -29,7 +31,16 @@ class App extends Component {
       todos: prewState.todos.filter(todo => todo.id !== todoId),
     }));
   };
-  addTodo;
+  addTodo = mess => {
+    const todo = {
+      id: nanoid(),
+      text: mess,
+      completed: false,
+    };
+    this.setState(prewState => ({
+      todos: [todo, ...prewState.todos],
+    }));
+  };
   /*   handleChange = todoId => {
     this.setState(prewState => ({
       todos: prewState.todos.map(todo => {
@@ -83,6 +94,7 @@ class App extends Component {
         <Accordion title="ToDo">
           <div>Count all: {todos.length}</div>
           <div>Count doing: {completedTodos}</div>
+          <TodoEditor onSubmit={this.addTodo} />
           <TodoList
             todos={todos}
             onDeleteTodo={this.deleteTodo}
