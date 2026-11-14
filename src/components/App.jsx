@@ -38,6 +38,13 @@ class App extends Component {
       filter: e.currentTarget.value,
     });
   };
+  getVisibleTodos = () => {
+    const { filter, todos } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    return todos.filter(todo =>
+      todo.text.toLowerCase().includes(normalizedFilter)
+    );
+  };
   addTodo = mess => {
     const todo = {
       id: nanoid(),
@@ -97,11 +104,7 @@ class App extends Component {
       0
     );
 
-    const normalizedFilter = this.state.filter.toLowerCase();
-
-    const visibleTodos = this.state.todos.filter(todo =>
-      todo.text.toLowerCase().includes(normalizedFilter)
-    );
+    const visibleTodos = this.getVisibleTodos();
     return (
       <div>
         <Accordion title="ToDo">
