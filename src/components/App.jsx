@@ -96,13 +96,14 @@ class App extends Component {
       ).toFixed(2)
     );
   };
+  getCompletedTodos = () => {
+    const { todos } = this.state;
+    return todos.reduce((acc, todo) => (todo.completed ? acc + 1 : acc), 0);
+  };
   render() {
     const { todos, filter } = this.state;
     const { good, neutral, bad } = this.state;
-    const completedTodos = todos.reduce(
-      (acc, todo) => (todo.completed ? acc + 1 : acc),
-      0
-    );
+    const completedTodos = this.getCompletedTodos();
 
     const visibleTodos = this.getVisibleTodos();
     return (
