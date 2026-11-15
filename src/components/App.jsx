@@ -104,7 +104,6 @@ class App extends Component {
     const { todos, filter } = this.state;
     const { good, neutral, bad } = this.state;
     const completedTodos = this.getCompletedTodos();
-
     const visibleTodos = this.getVisibleTodos();
     return (
       <div>
