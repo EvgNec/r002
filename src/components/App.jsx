@@ -28,8 +28,12 @@ class App extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    contacts: [],
-    name: '',
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
   };
   deleteTodo = todoId => {
     this.setState(prewState => ({
@@ -103,6 +107,16 @@ class App extends Component {
     const { todos } = this.state;
     return todos.reduce((acc, todo) => (todo.completed ? acc + 1 : acc), 0);
   };
+  addContacts = ({ id, name }) => {
+    const contact = {
+      id,
+      name,
+    };
+    this.setState(prewState => ({
+      contacts: [contact, ...prewState.contacts],
+    }));
+  };
+
   render() {
     const { todos, filter } = this.state;
     const { good, neutral, bad } = this.state;
@@ -144,7 +158,7 @@ class App extends Component {
         </Accordion>
         <Accordion title="Phonebook">
           <Section title="Phonebook">
-            <Phonebook onSubmit={values => console.log(values)} />
+            <Phonebook onSubmit={this.addContacts} />
           </Section>
           {false && (
             <>
