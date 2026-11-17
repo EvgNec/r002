@@ -1,9 +1,40 @@
 import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
 
-export class Phonebook extends Component {
+export default class Phonebook extends Component {
+  state = {
+    inputValue: '',
+  };
+  handleChange = evt => {
+    this.setState({ inputValue: evt.target.value });
+  };
+  handleSubmit = evt => {
+    evt.preventDefault();
+    /*   const { inputValue } = this.state;*/
+    this.props.onSubmit({ ...this.state });
+    this.reset();
+  };
+  reset = () => {
+    this.setState('');
+  };
+  InputId = nanoid();
   render() {
-    return <div></div>;
+    const { inputValue } = this.state;
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name
+          <input
+            type="text"
+            name="name"
+            required
+            value={inputValue}
+            onChange={this.handleChange}
+            id={this.InputId}
+          />
+        </label>
+        <button type="submit">Add contacts</button>
+      </form>
+    );
   }
 }
-
-export default Phonebook;

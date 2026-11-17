@@ -143,7 +143,7 @@ class App extends Component {
           </Section>
         </Accordion>
         <Accordion title="Phonebook">
-          <Section title="Form">
+          <Section title="Phonebook">
             <Phonebook onSubmit={values => console.log(values)} />
           </Section>
           {false && (
@@ -166,7 +166,6 @@ class App extends Component {
             </>
           )}
         </Accordion>
-        <Accordion></Accordion>
       </div>
     );
   }
