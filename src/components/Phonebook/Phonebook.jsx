@@ -10,12 +10,16 @@ export default class Phonebook extends Component {
   };
   handleSubmit = evt => {
     evt.preventDefault();
-    /*   const { inputValue } = this.state;*/
-    this.props.onSubmit({ ...this.state });
+    const { inputValue } = this.state;
+
+    this.props.onSubmit({
+      id: nanoid(),
+      name: inputValue.trim(),
+    });
     this.reset();
   };
   reset = () => {
-    this.setState('');
+    this.setState({ inputValue: '' });
   };
   InputId = nanoid();
   render() {
