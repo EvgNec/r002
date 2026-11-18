@@ -122,6 +122,7 @@ class App extends Component {
     const { good, neutral, bad } = this.state;
     const completedTodos = this.getCompletedTodos();
     const visibleTodos = this.getVisibleTodos();
+    console.log('5' - 2);
     return (
       <div>
         <Accordion title="ToDo">
