@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import { Field, Form, Formik } from 'formik';
 
 export default class Phonebook extends Component {
   state = {
@@ -9,7 +10,7 @@ export default class Phonebook extends Component {
   handleChange = evt => {
     this.setState({ inputValue: evt.target.value });
   };
-
+  /* 
   handleSubmit = evt => {
     evt.preventDefault();
 
@@ -23,30 +24,39 @@ export default class Phonebook extends Component {
     });
 
     this.reset();
-  };
+  }; */
+  handleSubmit = (values, actions) => {
+    console.log('Formik values:', values);
 
-  reset = () => {
-    this.setState({ inputValue: '' });
-  };
+    const name = values.name.trim();
+    const number = values.number.trim();
 
-  inputId = nanoid();
+    if (!name || !number) {
+      return;
+    }
+
+    this.props.onSubmit({
+      id: nanoid(),
+      name,
+      number,
+    });
+
+    actions.resetForm();
+  };
 
   render() {
-    const { inputValue } = this.state;
-
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.inputId}>Name</label>
-        <input
-          type="text"
-          name="name"
-          required
-          value={inputValue}
-          onChange={this.handleChange}
-          id={this.inputId}
-        />
-        <button type="submit">Add contacts</button>
-      </form>
+      <Formik
+        initialValues={{ name: '', number: '' }}
+        onSubmit={this.handleSubmit}
+      >
+        <Form>
+          <label htmlFor="name">Name</label>
+          <Field type="text" name="name" required />
+          <Field type="tel" name="number" />
+          <button type="submit">Add contacts</button>
+        </Form>
+      </Formik>
     );
   }
 }

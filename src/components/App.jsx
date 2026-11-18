@@ -108,10 +108,11 @@ class App extends Component {
     const { todos } = this.state;
     return todos.reduce((acc, todo) => (todo.completed ? acc + 1 : acc), 0);
   };
-  addContacts = ({ id, name }) => {
+  addContacts = ({ id, name, number }) => {
     const contact = {
       id,
       name,
+      number,
     };
     this.setState(prewState => ({
       contacts: [contact, ...prewState.contacts],
