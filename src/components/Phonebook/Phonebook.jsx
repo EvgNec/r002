@@ -10,21 +10,7 @@ export default class Phonebook extends Component {
   handleChange = evt => {
     this.setState({ inputValue: evt.target.value });
   };
-  /* 
-  handleSubmit = evt => {
-    evt.preventDefault();
 
-    const { inputValue } = this.state;
-    if (!inputValue) {
-      return;
-    }
-    this.props.onSubmit({
-      id: nanoid(),
-      name: inputValue.trim(),
-    });
-
-    this.reset();
-  }; */
   handleSubmit = (values, actions) => {
     console.log('Formik values:', values);
 
