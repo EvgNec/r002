@@ -15,6 +15,7 @@ import TodoEditor from './TodoList/TodoEditor';
 import { nanoid } from 'nanoid';
 import TodoFilter from './TodoList/TodoFilter';
 import Phonebook from './Phonebook/Phonebook';
+import Contactlist from './Phonebook/ContactList/Contactlist';
 
 class App extends Component {
   state = {
@@ -120,9 +121,9 @@ class App extends Component {
   render() {
     const { todos, filter } = this.state;
     const { good, neutral, bad } = this.state;
+    const { contacts } = this.state;
     const completedTodos = this.getCompletedTodos();
     const visibleTodos = this.getVisibleTodos();
-    console.log('5' - 2);
     return (
       <div>
         <Accordion title="ToDo">
@@ -160,6 +161,9 @@ class App extends Component {
         <Accordion title="Phonebook">
           <Section title="Phonebook">
             <Phonebook onSubmit={this.addContacts} />
+          </Section>
+          <Section title="Contacts">
+            <Contactlist contacts={contacts} />
           </Section>
           {false && (
             <>
